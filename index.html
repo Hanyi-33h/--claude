@@ -81,11 +81,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Sans','No
 /* LEFT: canvas panel */
 .mosaic-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;}
 
-#mosaicCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;}
+#mosaicCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;
+  /* 底图左侧40%完全显示，向右渐隐，配合视频左侧渐入 */
+  -webkit-mask-image:linear-gradient(to right, black 0%, black 32%, transparent 48%, transparent 100%);
+  mask-image:linear-gradient(to right, black 0%, black 32%, transparent 48%, transparent 100%);
+}
 .liquid-hint{position:absolute;bottom:32px;left:0;right:0;text-align:center;font-size:var(--f-min);letter-spacing:5px;color:rgba(255,255,255,.28);text-transform:uppercase;pointer-events:none;transition:opacity .8s;}
 
 /* RIGHT: content panel */
-.hero-rp{position:absolute;right:0;top:0;bottom:0;width:52%;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;text-align:right;padding:80px 60px 80px 40px;z-index:2;background:transparent;}
+.hero-rp{position:absolute;right:0;top:0;bottom:0;width:60%;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;text-align:right;padding:80px 60px 80px 40px;z-index:2;background:transparent;}
 /* 渐变动画背景层 */
 .hero-rp-bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
 .hero-rp-bg video{
@@ -94,8 +98,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Sans','No
   object-fit:cover;
   pointer-events:none;
   /* 左侧透明渐变，直接透出下方水波纹，无过渡色 */
-  -webkit-mask-image:linear-gradient(to right, transparent 0%, black 35%);
-  mask-image:linear-gradient(to right, transparent 0%, black 35%);
+  -webkit-mask-image:linear-gradient(to right, transparent 0%, black 28%);
+  mask-image:linear-gradient(to right, transparent 0%, black 28%);
 }
 .hero-rp::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(255,255,255,.02) 0%,rgba(255,255,255,.05) 100%);border-left:.5px solid rgba(255,255,255,.1);pointer-events:none;z-index:1;}
 .hero-rp > *:not(.hero-rp-bg){position:relative;z-index:2;}
@@ -568,7 +572,7 @@ body.force-mobile .h-scroll-hint{display:none!important;}
   <div class="hero-rp">
     <div class="hero-rp-bg">
       <video autoplay muted loop playsinline aria-hidden="true">
-        <source src="https://res.cloudinary.com/dehtxn9bk/video/upload/gradient-2560x1440_uudffc.mp4" type="video/mp4">
+        <source src="https://res.cloudinary.com/dehtxn9bk/video/upload/v1782719899/gradient-2560x1440_rbwe4e.mp4" type="video/mp4">
       </video>
     </div>
     <p class="h-eye" id="hEye">迪尚集团 · 高端时装制造</p>
